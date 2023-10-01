@@ -1,12 +1,14 @@
 package bean;
-// Generated 13/09/2023 17:40:18 by Hibernate Tools 4.3.1
+// Generated 22/09/2023 08:51:22 by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,17 +25,16 @@ public class ProdutoBjf  implements java.io.Serializable {
      private String nomeBjf;
      private String descricaoBjf;
      private String categoriaBjf;
-     private String precoBjf;
-     private short quantidadeBjf;
+     private Double precoBjf;
+     private int quantidadeBjf;
      private String fornecedorBjf;
      private String serialBjf;
-     private ProdutoVendasBjf produtoVendasBjf;
 
     public ProdutoBjf() {
     }
 
 	
-    public ProdutoBjf(int idprodutoBjf, String nomeBjf, String descricaoBjf, String categoriaBjf, String precoBjf, short quantidadeBjf, String fornecedorBjf, String serialBjf) {
+    public ProdutoBjf(int idprodutoBjf, String nomeBjf, String descricaoBjf, String categoriaBjf, Double precoBjf, int quantidadeBjf, String fornecedorBjf, String serialBjf) {
         this.idprodutoBjf = idprodutoBjf;
         this.nomeBjf = nomeBjf;
         this.descricaoBjf = descricaoBjf;
@@ -43,7 +44,7 @@ public class ProdutoBjf  implements java.io.Serializable {
         this.fornecedorBjf = fornecedorBjf;
         this.serialBjf = serialBjf;
     }
-    public ProdutoBjf(int idprodutoBjf, String nomeBjf, String descricaoBjf, String categoriaBjf, String precoBjf, short quantidadeBjf, String fornecedorBjf, String serialBjf, ProdutoVendasBjf produtoVendasBjf) {
+    public ProdutoBjf(int idprodutoBjf, String nomeBjf, String descricaoBjf, String categoriaBjf, Double precoBjf, int quantidadeBjf, String fornecedorBjf, String serialBjf, Set produtoVendasBjfs) {
        this.idprodutoBjf = idprodutoBjf;
        this.nomeBjf = nomeBjf;
        this.descricaoBjf = descricaoBjf;
@@ -52,7 +53,6 @@ public class ProdutoBjf  implements java.io.Serializable {
        this.quantidadeBjf = quantidadeBjf;
        this.fornecedorBjf = fornecedorBjf;
        this.serialBjf = serialBjf;
-       this.produtoVendasBjf = produtoVendasBjf;
     }
    
      @Id 
@@ -99,21 +99,21 @@ public class ProdutoBjf  implements java.io.Serializable {
 
     
     @Column(name="preco_bjf", nullable=false, length=11)
-    public String getPrecoBjf() {
+    public Double getPrecoBjf() {
         return this.precoBjf;
     }
     
-    public void setPrecoBjf(String precoBjf) {
+    public void setPrecoBjf(Double precoBjf) {
         this.precoBjf = precoBjf;
     }
 
     
     @Column(name="quantidade_bjf", nullable=false)
-    public short getQuantidadeBjf() {
+    public int getQuantidadeBjf() {
         return this.quantidadeBjf;
     }
     
-    public void setQuantidadeBjf(short quantidadeBjf) {
+    public void setQuantidadeBjf(int quantidadeBjf) {
         this.quantidadeBjf = quantidadeBjf;
     }
 
@@ -137,18 +137,9 @@ public class ProdutoBjf  implements java.io.Serializable {
         this.serialBjf = serialBjf;
     }
 
-@OneToOne(fetch=FetchType.LAZY, mappedBy="produtoBjf")
-    public ProdutoVendasBjf getProdutoVendasBjf() {
-        return this.produtoVendasBjf;
-    }
+
     
-    public void setProdutoVendasBjf(ProdutoVendasBjf produtoVendasBjf) {
-        this.produtoVendasBjf = produtoVendasBjf;
-    }
-
-
-
-
+   
 }
 
 

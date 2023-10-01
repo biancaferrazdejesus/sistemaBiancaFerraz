@@ -5,54 +5,59 @@
  */
 package dao;
 
+import bean.FuncionarioBjf;
+import bean.ProdutoBjf;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author duals
  */
 public class ProdutoDAO extends DAO_Abstract{
-   @Override
-   public void insert(Object objeto) {
+    
+     @Override
+     public void insert(Object objeto) {
       session.beginTransaction();
       session.save(objeto);
       session.getTransaction().commit();
 }
-   @Override
-   public void update(Object object) {
+
+     @Override
+      public void update(Object object) {
         session.beginTransaction();
-        session.save(object);
+        session.update(object);
         session.getTransaction().commit();
-    }
-   @Override
-   public void delete(Object object) {
+    } 
+      
+     @Override
+      public void delete(Object object) {
        session.beginTransaction();
        session.flush();
        session.clear();
        session.delete(object);
        session.getTransaction().commit();
     }
-   @Override
-    public Object list(int id) {
+     @Override
+       public Object list(int id) {
         session.beginTransaction();
-        
+        Criteria criteria = session.createCriteria(ProdutoBjf.class);
+        criteria.add(Restrictions.eq("idprodutoBjf", id));
+        List lista = criteria.list();
         session.getTransaction().commit();
-        return null;
+        return lista.get(0); 
     }
-   @Override
+     @Override
      public ArrayList listAll() {
-   session.beginTransaction();
-    Criteria criteria = session.createCriteria(Grupo.class);
-    List lista = criteria.list();
-    session.getTransaction().commit();
-return (ArrayList) lista;
+     session.beginTransaction();
+     Criteria criteria = session.createCriteria(ProdutoBjf.class);
+     List lista = criteria.list();
+     session.getTransaction().commit();
+     return (ArrayList) lista;
 }
     
-    
-    
-    
-    
+      
     
 }

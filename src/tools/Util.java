@@ -5,6 +5,10 @@
  */
 package tools;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -46,4 +50,44 @@ public class Util {
        }else {
        return false;}
     }
+    public static int strInt(String cad) { //str é pegar string e transformar em inteiro
+        return Integer.valueOf(cad);
+    }
+
+    public static String intStr(int num) {
+        return String.valueOf(num);
+    }
+
+    public static double strDouble(String cad) {
+        return Double.parseDouble(cad);
+    }
+
+    public static String doubleStr(double num) {
+        return String.valueOf(num);
+    }
+
+    public static Date strDate(String cad) {
+        if (cad == null || cad.trim().isEmpty()) {
+            return null;
+        }
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return formato.parse(cad);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null; 
+        }
+    }
+
+    public static String dateStr(Date date) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(date);
+    }
+
+    public static String Str(BigDecimal salarioBjf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
+

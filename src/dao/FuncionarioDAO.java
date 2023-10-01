@@ -5,9 +5,11 @@
  */
 package dao;
 
+import bean.FuncionarioBjf;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -40,17 +42,19 @@ public class FuncionarioDAO extends DAO_Abstract{
      @Override
        public Object list(int id) {
         session.beginTransaction();
-        
+        Criteria criteria = session.createCriteria(FuncionarioBjf.class);
+        criteria.add(Restrictions.eq("idfuncionarioBjf", id));
+        List lista = criteria.list();
         session.getTransaction().commit();
-        return null;
+        return lista.get(0); 
     }
      @Override
      public ArrayList listAll() {
-   session.beginTransaction();
-    Criteria criteria = session.createCriteria(Grupo.class);
-    List lista = criteria.list();
-    session.getTransaction().commit();
-return (ArrayList) lista;
+     session.beginTransaction();
+     Criteria criteria = session.createCriteria(FuncionarioBjf.class);
+     List lista = criteria.list();
+     session.getTransaction().commit();
+     return (ArrayList) lista;
 }
     
       

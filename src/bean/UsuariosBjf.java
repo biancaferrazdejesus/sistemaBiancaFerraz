@@ -1,13 +1,11 @@
 package bean;
-// Generated 13/09/2023 17:40:18 by Hibernate Tools 4.3.1
+// Generated 22/09/2023 08:51:22 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,27 +25,14 @@ public class UsuariosBjf  implements java.io.Serializable {
      private Date dataNascBjf;
      private String emailBjf;
      private String cpfBjf;
-     private char sexoBjf;
+     private String sexoBjf;
      private String ativoBjf;
      private String senhaBjf;
-     private ClienteBjf clienteBjf;
-     private FuncionarioBjf funcionarioBjf;
 
     public UsuariosBjf() {
     }
 
-	
-    public UsuariosBjf(int idusuariosBjf, String nomeBjf, Date dataNascBjf, String emailBjf, String cpfBjf, char sexoBjf, String ativoBjf, String senhaBjf) {
-        this.idusuariosBjf = idusuariosBjf;
-        this.nomeBjf = nomeBjf;
-        this.dataNascBjf = dataNascBjf;
-        this.emailBjf = emailBjf;
-        this.cpfBjf = cpfBjf;
-        this.sexoBjf = sexoBjf;
-        this.ativoBjf = ativoBjf;
-        this.senhaBjf = senhaBjf;
-    }
-    public UsuariosBjf(int idusuariosBjf, String nomeBjf, Date dataNascBjf, String emailBjf, String cpfBjf, char sexoBjf, String ativoBjf, String senhaBjf, ClienteBjf clienteBjf, FuncionarioBjf funcionarioBjf) {
+    public UsuariosBjf(int idusuariosBjf, String nomeBjf, Date dataNascBjf, String emailBjf, String cpfBjf, String sexoBjf, String ativoBjf, String senhaBjf) {
        this.idusuariosBjf = idusuariosBjf;
        this.nomeBjf = nomeBjf;
        this.dataNascBjf = dataNascBjf;
@@ -56,8 +41,6 @@ public class UsuariosBjf  implements java.io.Serializable {
        this.sexoBjf = sexoBjf;
        this.ativoBjf = ativoBjf;
        this.senhaBjf = senhaBjf;
-       this.clienteBjf = clienteBjf;
-       this.funcionarioBjf = funcionarioBjf;
     }
    
      @Id 
@@ -113,12 +96,13 @@ public class UsuariosBjf  implements java.io.Serializable {
     }
 
     
-    @Column(name="sexo_bjf", nullable=false, length=1)
-    public char getSexoBjf() {
-        return this.sexoBjf;
-    }
+   @Column(name="sexo_bjf", nullable=false)
+public String getSexoBjf() {
+    return this.sexoBjf;
+}
+
     
-    public void setSexoBjf(char sexoBjf) {
+    public void setSexoBjf(String sexoBjf) {
         this.sexoBjf = sexoBjf;
     }
 
@@ -141,28 +125,6 @@ public class UsuariosBjf  implements java.io.Serializable {
     public void setSenhaBjf(String senhaBjf) {
         this.senhaBjf = senhaBjf;
     }
-
-@OneToOne(fetch=FetchType.LAZY, mappedBy="usuariosBjf")
-    public ClienteBjf getClienteBjf() {
-        return this.clienteBjf;
-    }
-    
-    public void setClienteBjf(ClienteBjf clienteBjf) {
-        this.clienteBjf = clienteBjf;
-    }
-
-@OneToOne(fetch=FetchType.LAZY, mappedBy="usuariosBjf")
-    public FuncionarioBjf getFuncionarioBjf() {
-        return this.funcionarioBjf;
-    }
-    
-    public void setFuncionarioBjf(FuncionarioBjf funcionarioBjf) {
-        this.funcionarioBjf = funcionarioBjf;
-    }
-
-
-
-
 }
 
 
